@@ -2,7 +2,7 @@
     border-radius: 10px;
     background: darkblue;
     padding: 20px;
-    height: 70%;
+    height: 60%;
 }
 
 .headText{
@@ -10,12 +10,11 @@
     font-size: 25px;
 }
 
-
 .buttons{
     position: relative;
     float: right;
     right: 5%;
-    bottom: 96%;
+    bottom: 48px;
 }
 
 .buttons a{
