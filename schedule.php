@@ -144,7 +144,9 @@ switch($intDaynumber){
             </body>
         <table>  
                 <tr>
-                
+                    <th>'.date("M").'</th>
+                </tr>
+                <tr>
                 <th>Zondag, '.date("d-m-Y", strtotime($strZondag)).'</th>
                 <th>Maandag, '.date("d-m-Y", strtotime($strMaandag)).'</th>
                 <th>Dinsdag, '.date("d-m-Y", strtotime($strDinsdag)).'</th>
