@@ -144,7 +144,7 @@ switch($intDaynumber){
             </body>
         <table>  
                 <tr>
-                <th>'.date("H:i").'</th>
+                
                 <th>Zondag, '.date("d-m-Y", strtotime($strZondag)).'</th>
                 <th>Maandag, '.date("d-m-Y", strtotime($strMaandag)).'</th>
                 <th>Dinsdag, '.date("d-m-Y", strtotime($strDinsdag)).'</th>
@@ -153,18 +153,18 @@ switch($intDaynumber){
                 <th>Vrijdag, '.date("d-m-Y", strtotime($strVrijdag)).'</th>
                 <th>Zaterdag, '.date("d-m-Y", strtotime($strZaterdag)).'</th>
                 </tr>');
-for($intHour = 0;$intHour<=23;$intHour++){
+
     echo("<tr>
-        <th>".$intHour.":00</th>
+        <th></th>
         <td></td>
-        <td></td>
+        <td></td>x
         <td></td>
         <td></td>
         <td></td>
         <td></td>
         <td></td>
     </tr>");
-}
+
 echo("</table>
     </body>
 </html>
