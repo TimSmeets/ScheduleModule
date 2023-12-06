@@ -155,7 +155,6 @@ switch($intDaynumber){
                 </tr>');
 
     echo("<tr>
-        <th></th>
         <td></td>
         <td></td>
         <td></td>
