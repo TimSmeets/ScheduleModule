@@ -36,3 +36,7 @@
     width: 8%;
     bottom: 3px;
 }
+
+.td {
+    height: 50px !important;
+}
