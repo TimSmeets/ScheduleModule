@@ -1,9 +1,4 @@
 <?php
-/*
-De datum en dagen worden automatisch gegenereed op de weekdagen. Linksboven staat de huidige tijd,
-ik begreep niet helemaal wat er bedoeld werd met de tijd automatisch genereren.
-Is dit de bedoeling?
-*/
 
 $strJanuarie = "";
 $strFebruari = "";
