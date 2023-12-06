@@ -154,7 +154,7 @@ switch($intDaynumber){
                 <th>Zaterdag, '.date("d-m-Y", strtotime($strZaterdag)).'</th>
                 </tr>');
 
-    echo class="date"("<tr>
+    echo("<tr>
         <td></td>
         <td></td>
         <td></td>
