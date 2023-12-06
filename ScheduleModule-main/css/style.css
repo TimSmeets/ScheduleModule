@@ -1,0 +1,38 @@
+.scheduleMenu{
+    border-radius: 10px;
+    background: darkblue;
+    padding: 20px;
+    height: 60%;
+}
+
+.headText{
+    color: white;
+    font-size: 25px;
+}
+
+.buttons{
+    position: relative;
+    float: right;
+    right: 5%;
+    bottom: 48px;
+}
+
+.buttons a{
+    text-decoration: none;
+    color: white;
+    padding: 2%;
+}
+
+.login{
+    border-radius: 10px;
+    position: relative;
+    left: 95%;
+    bottom: 24px;
+    background: #0dcaf0;
+}
+
+.login img{
+    position: relative;
+    width: 8%;
+    bottom: 3px;
+}
