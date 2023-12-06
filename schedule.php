@@ -143,7 +143,7 @@ switch($intDaynumber){
                 </div>
             </body>
         <table>  
-                echo(" <h2>'.date("M").'</h2>");
+                <h2>'.date("M").'</h2>
                 <tr>
                 <th>Zondag, '.date("d-m-Y", strtotime($strZondag)).'</th>
                 <th>Maandag, '.date("d-m-Y", strtotime($strMaandag)).'</th>
