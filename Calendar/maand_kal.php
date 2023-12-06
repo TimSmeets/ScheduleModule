@@ -24,16 +24,6 @@ $intDaynumber = date("N");
 switch($intDaynumber){
     // Maandag
     case "1":
-        $strZondag = "- 0 days";
-        $strMaandag = "+ 1 days";
-        $strDinsdag = "+ 2 days";
-        $strWoensdag = "+ 3 days";
-        $strDonderdag = "+ 4 days";
-        $strVrijdag = "+ 5 days";
-        $strZaterdag = "+ 6 days";
-        break;
-    //dinsdag
-    case "2":
         $strZondag = "- 1 days";
         $strMaandag = "- 0 days";
         $strDinsdag = "+ 1 days";
@@ -42,29 +32,29 @@ switch($intDaynumber){
         $strVrijdag = "+ 4 days";
         $strZaterdag = "+ 5 days";
         break;
-    //woensdag
-    case "3":
+    //dinsdag
+    case "2":
         $strZondag = "- 2 days";
-        $strMaandag = "-1 days";
+        $strMaandag = "- 1 days";
         $strDinsdag = "- 0 days";
         $strWoensdag = "+ 1 days";
         $strDonderdag = "+ 2 days";
         $strVrijdag = "+ 3 days";
         $strZaterdag = "+ 4 days";
         break;
-
-    //donderdag
-    case "4":
+    //woensdag
+    case "3":
         $strZondag = "- 3 days";
-        $strMaandag = "- 2 days";
+        $strMaandag = "-2 days";
         $strDinsdag = "- 1 days";
         $strWoensdag = "- 0 days";
         $strDonderdag = "+ 1 days";
         $strVrijdag = "+ 2 days";
         $strZaterdag = "+ 3 days";
         break;
-    //vrijdag
-    case "5":
+
+    //donderdag
+    case "4":
         $strZondag = "- 4 days";
         $strMaandag = "- 3 days";
         $strDinsdag = "- 2 days";
@@ -73,25 +63,35 @@ switch($intDaynumber){
         $strVrijdag = "+ 1 days";
         $strZaterdag = "+ 2 days";
         break;
-    //zaterdag
-    case "6":
+    //vrijdag
+    case "5":
         $strZondag = "- 5 days";
         $strMaandag = "- 4 days";
         $strDinsdag = "- 3 days";
         $strWoensdag = "- 2 days";
-        $strDonderdag = "-1 days";
+        $strDonderdag = "- 1 days";
         $strVrijdag = "- 0 days";
         $strZaterdag = "+ 1 days";
         break;
-    //zondag
-    case "7":
+    //zaterdag
+    case "6":
         $strZondag = "- 6 days";
         $strMaandag = "- 5 days";
         $strDinsdag = "- 4 days";
         $strWoensdag = "- 3 days";
-        $strDonderdag = "- 2 days";
+        $strDonderdag = "-2 days";
         $strVrijdag = "- 1 days";
         $strZaterdag = "- 0 days";
+        break;
+    //zondag
+    case "7":
+        $strZondag = "- 7 days";
+        $strMaandag = "- 6 days";
+        $strDinsdag = "- 5 days";
+        $strWoensdag = "- 4 days";
+        $strDonderdag = "- 3 days";
+        $strVrijdag = "- 2 days";
+        $strZaterdag = "- 1 days";
         break;
     default :
         echo("Ongeldige dagwaarde"); exit;
