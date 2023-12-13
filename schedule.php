@@ -38,6 +38,7 @@
 		$date = $ym."-".$day;
 
 		if ($today == $date) {
+			// !!! Bug: Ik probeer hier de datum van vandaag lichtblauw te markeren, maar de style werkt niet
 			$week .= "<td class='today'>".$day;
 		} else {
 			$week .= "<td>".$day;
@@ -89,11 +90,14 @@
             </nav>
         </header>
 		
-			<br>
-			<br>
-			<br>
-			<br>
-			<br>
+
+		<!-- Dit is niet goed geregeld maar het werkt wel -->
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+
 
 		<div class="container">
 
