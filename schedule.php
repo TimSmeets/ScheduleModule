@@ -1,116 +1,82 @@
 <?php
+	
+	// Tijdzone
+	date_default_timezone_set("Europe/Amsterdam");
 
-$strJanuarie = "";
-$strFebruari = "";
-$strMaart = "";
-$strApril = "";
-$strMei = "";
-$strJuni = "";
-$strJuli = "";
-$strZaterdag = "";
-$strAugustus = "";
-$strSeptember = "";
-$strOktober = "";
-$strNovember = "";
-$strDecember = "";
+	// Maand
+	if (isset($_GET['ym'])) {
+		$ym = $_GET['ym'];
+	} else {
+		$ym = date("Y-m");
+	}
 
-$intDaynumber = date("N");
+	// Format
+	$timestamp = strtotime($ym."-01");
 
-switch($intDaynumber){
-    // Maandag
-    case "1":
-        $strZondag = "- 1 days";
-        $strMaandag = "- 0 days";
-        $strDinsdag = "+ 1 days";
-        $strWoensdag = "+ 2 days";
-        $strDonderdag = "+ 3 days";
-        $strVrijdag = "+ 4 days";
-        $strZaterdag = "+ 5 days";
-        break;
-    //dinsdag
-    case "2":
-        $strZondag = "- 2 days";
-        $strMaandag = "- 1 days";
-        $strDinsdag = "- 0 days";
-        $strWoensdag = "+ 1 days";
-        $strDonderdag = "+ 2 days";
-        $strVrijdag = "+ 3 days";
-        $strZaterdag = "+ 4 days";
-        break;
-    //woensdag
-    case "3":
-        $strZondag = "- 3 days";
-        $strMaandag = "-2 days";
-        $strDinsdag = "- 1 days";
-        $strWoensdag = "- 0 days";
-        $strDonderdag = "+ 1 days";
-        $strVrijdag = "+ 2 days";
-        $strZaterdag = "+ 3 days";
-        break;
+	if ($timestamp === false) {
+		$ym = date("Y-m");
+		$timestamp = strtotime($ym."-01");
+	}
+	
+	// Datum van vandaag vinden
+	$today = date("Y-m-j", time());
+	$html_title = date("Y / m", $timestamp);
 
-    //donderdag
-    case "4":
-        $strZondag = "- 4 days";
-        $strMaandag = "- 3 days";
-        $strDinsdag = "- 2 days";
-        $strWoensdag = "- 1 days";
-        $strDonderdag = "- 0 days";
-        $strVrijdag = "+ 1 days";
-        $strZaterdag = "+ 2 days";
-        break;
-    //vrijdag
-    case "5":
-        $strZondag = "- 5 days";
-        $strMaandag = "- 4 days";
-        $strDinsdag = "- 3 days";
-        $strWoensdag = "- 2 days";
-        $strDonderdag = "- 1 days";
-        $strVrijdag = "- 0 days";
-        $strZaterdag = "+ 1 days";
-        break;
-    //zaterdag
-    case "6":
-        $strZondag = "- 6 days";
-        $strMaandag = "- 5 days";
-        $strDinsdag = "- 4 days";
-        $strWoensdag = "- 3 days";
-        $strDonderdag = "-2 days";
-        $strVrijdag = "- 1 days";
-        $strZaterdag = "- 0 days";
-        break;
-    //zondag
-    case "7":
-        $strZondag = "- 7 days";
-        $strMaandag = "- 6 days";
-        $strDinsdag = "- 5 days";
-        $strWoensdag = "- 4 days";
-        $strDonderdag = "- 3 days";
-        $strVrijdag = "- 2 days";
-        $strZaterdag = "- 1 days";
-        break;
-    default :
-        echo("Ongeldige dagwaarde"); exit;
-}
+	// Door maanden kunnen klikken
+	$prev = date("Y-m", mktime(0, 0, 0, date("m", $timestamp)-1, 1, date("Y", $timestamp)));
+	$next = date("Y-m", mktime(0, 0, 0, date("m", $timestamp)+1, 1, date("Y", $timestamp)));
 
-    echo('
-        <html>
-            <head>
-                <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
-                <link rel="stylesheet" type="text/css" href="css/style.css"/>
-                <link rel="stylesheet" type="text/css" href="css/navbar.css"/>
-                <style>table, th, td {
-                    border: 1px solid black;
-                    border-collapse: collapse;
-                    }
-                table{
-                    width:100%
-                </style>
-            </head>
-            
-            <body>
+	$day_count = date("t", $timestamp);
+	$str = date("w", mktime(0, 0, 0, date("m", $timestamp), 1, date("Y", $timestamp)));
 
-                <header>
-                    <nav>
+	$weeks = array();
+	$week = "";
+
+	$week .= str_repeat("<td></td>", $str);
+
+	for ( $day = 1; $day <= $day_count; $day++, $str++) {
+		$date = $ym."-".$day;
+
+		if ($today == $date) {
+			$week .= "<td class='today'>".$day;
+		} else {
+			$week .= "<td>".$day;
+		}
+		$week .= "</td>";
+
+		// Einde vd Week/Maand
+		if ($str % 7 == 6 || $day == $day_count) {
+			if($day == $day_count) {
+				$week .= str_repeat("<td></td>", 6 - ($str % 7));
+			}
+
+			$weeks[] = "<tr>".$week."</tr>";
+			$week = "";
+		}
+	}
+
+?>
+
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		
+		<!-- Titel, Bootstrap, en Stylesheet -->
+		<title>Agenda</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+		<link href="./styling/styles.css" rel="stylesheet">
+
+		<link rel="stylesheet" type="text/css" href="css/navbar.css"/>
+
+	</head>
+
+	<body>
+
+		<header>
+            <nav>
                 <div class="logo">
                     <a href="./index.php"><img src="./images/thechallengezone_cover.png" href="./index.php" alt="hero image" style="width: 200px; height: auto;"></a>
                     </div>
@@ -118,57 +84,47 @@ switch($intDaynumber){
                         <li><a href="./insturen.php">Project insturen</a></li>
                         <li><a href="./planning.php">Planning</a></li>
                         <li><a href="./documentatie.php">Documentatie</a></li>
-                        <li><a href="./login.php">Inloggen</a></li>
-                    </ul>
-                </nav>
-            </header>
+                    <li><a href="./login.php">Inloggen</a></li>
+                </ul>
+            </nav>
+        </header>
+		
+			<br>
+			<br>
+			<br>
+			<br>
+			<br>
 
-            <br/>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="scheduleMenu">
-                                <div class="headText">
-                                    <p>THE CHALLANGE ZONE</p>
-                                </div>  
-                                <div class="buttons">
-                                    <a href="#">Home</a>
-                                    <a href="#">Over ons</a>
-                                    <a href="#">Insturen</a>
-                                    <a class="login" href="#">Login <img src="./images/profile%20icon.png" alt="Profile Icon"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </body>
-        <table>  
-                <h2>'.date("M").'</h2>
-                <tr>
-                <th>Zondag, '.date("d-m-Y", strtotime($strZondag)).'</th>
-                <th>Maandag, '.date("d-m-Y", strtotime($strMaandag)).'</th>
-                <th>Dinsdag, '.date("d-m-Y", strtotime($strDinsdag)).'</th>
-                <th>Woensdag, '.date("d-m-Y", strtotime($strWoensdag)).'</th>
-                <th>Donderdag, '.date("d-m-Y", strtotime($strDonderdag)).'</th>
-                <th>Vrijdag, '.date("d-m-Y", strtotime($strVrijdag)).'</th>
-                <th>Zaterdag, '.date("d-m-Y", strtotime($strZaterdag)).'</th>
-                </tr>');
+		<div class="container">
 
-    echo("<tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>");
+			<!-- Ik weet dat PHP altijd bovenaan moet maar ik wist niets beter dan het zo te doen -->
 
-echo("</table>
-    </body>
+			<h3><a href="?ym=<?php echo $prev; ?>">&lt;</a><?php echo $html_title; ?><a href="?ym=<?php echo $next; ?>">&gt;</a></h3>
+
+			<br>
+
+			<table class="table table-bordered">
+
+				<tr>
+					<th width=200>Monday</th>
+					<th width=200>Tuesday</th>
+					<th width=200>Wednesday</th>
+					<th width=200>Thursday</th>
+					<th width=200>Friday</th>
+					<th width=200>Saturday</th>
+					<th width=200>Sunday</th>
+				</tr>
+
+				<?php
+					foreach($weeks as $week) {
+						echo $week;
+					}
+				?>
+
+			</table>
+
+		</div>
+
+	</body>
+
 </html>
-");
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
-?>
