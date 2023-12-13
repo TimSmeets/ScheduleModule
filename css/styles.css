@@ -15,8 +15,8 @@ td {
     height: 100px;
 }
 
-.today {
-    background: lightblue;
+td.today {
+    background-color: lightblue;
 }
 
 
