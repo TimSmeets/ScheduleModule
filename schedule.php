@@ -2,6 +2,9 @@
 
 include "./includes/calendar_generator.php";
 
+// Getting timezone
+date_default_timezone_set("Europe/Amsterdam");
+
 // Month switch button
 $prev = date("Y-m", mktime(0, 0, 0, date("m", $timestamp)-1, 1, date("Y", $timestamp)));
 $next = date("Y-m", mktime(0, 0, 0, date("m", $timestamp)+1, 1, date("Y", $timestamp)));

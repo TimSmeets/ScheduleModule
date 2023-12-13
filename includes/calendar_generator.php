@@ -1,7 +1,4 @@
 <?php
-// Getting timezone
-date_default_timezone_set("Europe/Amsterdam");
-
 // Getting current year and month for calander page selection
 if (isset($_GET['ym'])) {
     $ym = $_GET['ym'];
