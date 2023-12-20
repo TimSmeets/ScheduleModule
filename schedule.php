@@ -44,7 +44,9 @@ $next = date("Y-m", mktime(0, 0, 0, date("m", $timestamp)+1, 1, date("Y", $times
             <div class="row">
                 <h3><a href="?ym=<?php echo $prev; ?>">&lt;</a><?php echo $html_title; ?><a href="?ym=<?php echo $next; ?>">&gt;</a></h3>
             </div>
+
             <div class="row">
+
                 <table class="table table-bordered">
 
                     <tr>
@@ -64,7 +66,30 @@ $next = date("Y-m", mktime(0, 0, 0, date("m", $timestamp)+1, 1, date("Y", $times
                     ?>
 
                 </table>
+
+                <hr/>
+
             </div>
+
+            <br/>
+
+            <h2>Geselecteerde datum:</h2>
+            <h3>Woensdag, 20/12/2023</h3>
+            Naam event:<br/>
+            <input type="text"/>
+            <hr/>
+            Tijd:<br/>
+            <input type="time"/>
+            <hr/>
+            Beschrijving:<br/>
+            <input type="text"/>
+            <hr/>
+            Personen:<br/>
+            <input type="text"/>
+
+            <hr/>
+
+            <button>Verwijderen</button><button>Opslaan</button>
 		</div>
 	</body>
 </html>
