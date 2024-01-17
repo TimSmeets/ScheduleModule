@@ -32,11 +32,11 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
 
     // Marks current day as today and makes the background-color lightblue
     if ($today == $date) {
-        $week .= "<td class='today'>".$day;
+        $week .= "<td class='today'><input type='submit' value='".$day."'>";
     } else {
-        $week .= "<td>".$day;
+        $week .= "<td><input type='submit' value='".$day."'>";
     }
-    $week .= "<br/><br/><input type='submit' value='Selecteren'></td>";
+    $week .= "</td>";
 
     // End of calander page
     if ($str % 7 == 6 || $day == $day_count) {
