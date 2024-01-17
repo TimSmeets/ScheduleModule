@@ -36,7 +36,7 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
     } else {
         $week .= "<td>".$day;
     }
-    $week .= "<br/><br/><button>Selecteren</button></td>";
+    $week .= "<br/><br/><input type='submit' value='Selecteren'></td>";
 
     // End of calander page
     if ($str % 7 == 6 || $day == $day_count) {
