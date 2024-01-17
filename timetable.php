@@ -4,6 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <title>Time table</title>
+    <link rel="stylesheet" href="./css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <link href="./css/styles.css" rel="stylesheet">
+
+    <link rel="stylesheet" type="text/css" href="css/navbar.css"/>
 </head>
 <style>
     table, th, td {
