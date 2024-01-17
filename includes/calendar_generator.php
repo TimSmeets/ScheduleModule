@@ -1,5 +1,5 @@
 <?php
-// Getting current year and month for calander page selection
+// Het jaar en de maand van nu ophalen
 if (isset($_GET['ym'])) {
     $ym = $_GET['ym'];
 } else {
@@ -13,11 +13,11 @@ if ($timestamp === false) {
     $timestamp = strtotime($ym."-01");
 }
 
-// Getting current date
+// Datum van vandaag ophalen
 $today = date("Y-m-j", time());
 $html_title = date("Y / m", $timestamp);
 
-// Counting amount of days to generate
+// Totale aantal dagen tellen voor een bepaalde maand
 $day_count = date("t", $timestamp);
 $str = date("w", mktime(0, 0, 0, date("m", $timestamp), 1, date("Y", $timestamp)));
 
@@ -26,11 +26,11 @@ $week = "";
 
 $week .= str_repeat("<td></td>", $str);
 
-// Adding numbers to calander days
+// Nummers toevoegen aan de calendar dagen
 for ( $day = 1; $day <= $day_count; $day++, $str++) {
     $date = $ym."-".$day;
 
-    // Marks current day as today and makes the background-color lightblue
+    // Markeer de dag van vandaag in lichtblauw
     if ($today == $date) {
         $week .= "<td class='today'><input type='submit' value='".$day."'>";
     } else {
@@ -38,7 +38,7 @@ for ( $day = 1; $day <= $day_count; $day++, $str++) {
     }
     $week .= "</td>";
 
-    // End of calander page
+    // Einde van de calendar
     if ($str % 7 == 6 || $day == $day_count) {
         if($day == $day_count) {
             $week .= str_repeat("<td></td>", 6 - ($str % 7));

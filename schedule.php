@@ -60,13 +60,13 @@ $next = date("Y-m", mktime(0, 0, 0, date("m", $timestamp)+1, 1, date("Y", $times
                 <table class="table table-bordered">
 
                     <tr>
-                        <th width=200>Monday</th>
-                        <th width=200>Tuesday</th>
-                        <th width=200>Wednesday</th>
-                        <th width=200>Thursday</th>
-                        <th width=200>Friday</th>
-                        <th width=200>Saturday</th>
-                        <th width=200>Sunday</th>
+                        <th width=200>Maandag</th>
+                        <th width=200>Dinsdag</th>
+                        <th width=200>Woensdag</th>
+                        <th width=200>Donderdag</th>
+                        <th width=200>Vrijdag</th>
+                        <th width=200>Zaterdag</th>
+                        <th width=200>Zondag</th>
                     </tr>
 
                     <?php
