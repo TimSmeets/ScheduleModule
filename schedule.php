@@ -2,10 +2,20 @@
 
 include "./includes/calendar_generator.php";
 
-// Getting timezone
+// Controleren of er wat gepost is
+if(!empty($_POST["sName"])) {
+	// Waardes declareren
+	$sEventName		= $_POST ['sName'];
+    $tTime		    = $_POST ['tTime'];
+    $sDescription	= $_POST ['sDesc'];
+    $sPeople		= $_POST ['sPeop'];
+
+}
+
+// Tijdzone
 date_default_timezone_set("Europe/Amsterdam");
 
-// Month switch button
+// Maand switch button
 $prev = date("Y-m", mktime(0, 0, 0, date("m", $timestamp)-1, 1, date("Y", $timestamp)));
 $next = date("Y-m", mktime(0, 0, 0, date("m", $timestamp)+1, 1, date("Y", $timestamp)));
 ?>
@@ -73,23 +83,27 @@ $next = date("Y-m", mktime(0, 0, 0, date("m", $timestamp)+1, 1, date("Y", $times
 
             <br/>
 
+            <!-- Form invullen op iets in te plannen -->
             <h2>Geselecteerde datum:</h2>
             <h3>Woensdag, 20/12/2023</h3>
-            Naam event:<br/>
-            <input type="text"/>
-            <hr/>
-            Tijd:<br/>
-            <input type="time"/>
-            <hr/>
-            Beschrijving:<br/>
-            <input type="text"/>
-            <hr/>
-            Personen:<br/>
-            <input type="text"/>
+            <form>
+                Naam event:<br/>
+                <input type="text" id="name" name="sName" required/>
+                <hr/>
+                Tijd:<br/>
+                <input type="time" id="time" name="tTime" min="09:00" max="18:00" required/>
+                <hr/>
+                Beschrijving:<br/>
+                <input type="text" id="desc" name="sDesc" required/>
+                <hr/>
+                Personen:<br/>
+                <input type="text" id="pers" name="sPeop" required/>
+                
+                <hr/>
+                <input type="submit" value="Verwijderen" name="delete" id="delete"><input type="submit" value="Oplaan" name="save" id="save">
 
-            <hr/>
+            </form>
 
-            <button>Verwijderen</button><button>Opslaan</button>
 		</div>
 	</body>
 </html>
